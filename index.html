@@ -11,45 +11,143 @@
         <h1>Welcome</h1>
         <p class="lead">Here are the API's provided by this server</p>
 
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <a href="#getUserInfo" data-toggle="collapse" class="panel-title">
+        <div class="panel-group">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <a class="panel-title" href="#getUserInfo" data-toggle="collapse" data-parent=".panel-group">
                     getUserInfo <span class="caret"></span>
                 </a>
+                </div>
+                <div id="getUserInfo" class="panel-collapse collapse in">
+                    <table class="table table-bordered table-hover">
+                        <colgroup>
+                            <col class="col-md-3">
+                            <col class="col-md-5">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>Gets the user info, matching the name.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">URL</th>
+                                <td>/api/getUserInfo/<b>&lt;name&gt;</b></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">HTTP Method</th>
+                                <td>GET</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Format</th>
+                                <td>Plain Text</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Example of GET request</th>
+                                <td>/api/getUserInfo/Ingrid</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Returns status 200 for OK, 400 for bad request and 500 for server error; plus the user info
+                                    OR a message indicating what went wrong.</th>
+                                <td>
+                                    <code>{ "name": "Ingrid", "age": 30, "city": "Paris" }</code>
+                                    <br/><code>{ "Error": "failed to connect to server on first connect" }</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div id="getUserInfo" class="panel-collapse collapse in">
-                <table class="table table-bordered table-hover">
-                    <colgroup>
-                        <col class="col-md-3">
-                        <col class="col-md-5">
-                    </colgroup>
-                    <tbody>
-                        <tr>
-                            <th scope="row">URL</th>
-                            <td>/api/getUserInfo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Format</th>
-                            <td>JSON</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Type</th>
-                            <td>POST</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Parameters</th>
-                            <td>name</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Example of POST data</th>
-                            <td><code>{ "name": "Jon" }</code></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Returns all the user info - if found in the db</th>
-                            <td><code>{ "name": "Jon", "age": 40, "city": "London", "subscribed": false }</code></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <a class="panel-title" href="#addOrUpdateUser" data-toggle="collapse" data-parent=".panel-group">
+                    addOrUpdateUser <span class="caret"></span>
+                </a>
+                </div>
+                <div id="addOrUpdateUser" class="panel-collapse collapse">
+                    <table class="table table-bordered table-hover">
+                        <colgroup>
+                            <col class="col-md-3">
+                            <col class="col-md-5">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>Adds or updates a user, matching the name.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">URL</th>
+                                <td>/api/addOrUpdateUser</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">HTTP Method</th>
+                                <td>POST</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Format</th>
+                                <td>JSON</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Example of POST payload</th>
+                                <td><code>{ "name": "Jon", "age": 40, "city": "London" }</code></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Returns status 200 for OK, 400 for bad payload and 500 for server error; plus a message indicating
+                                    what happened</th>
+                                <td>
+                                    <code>{ "result": "User inserted successfully" }</code>
+                                    <br/><code>{ "result": "User updated successfully" }</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <a class="panel-title" href="#deleteUser" data-toggle="collapse" data-parent=".panel-group">
+                    deleteUser <span class="caret"></span>
+                </a>
+                </div>
+                <div id="deleteUser" class="panel-collapse collapse">
+                    <table class="table table-bordered table-hover">
+                        <colgroup>
+                            <col class="col-md-3">
+                            <col class="col-md-5">
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Description</th>
+                                <td>Deletes the user, matching the name.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">URL</th>
+                                <td>/api/deleteUser/<b>&lt;name&gt;</b></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">HTTP Method</th>
+                                <td>DELETE</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Format</th>
+                                <td>Plain Text</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Example of DELETE request</th>
+                                <td>/api/deleteUser/Ingrid</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Returns status 200 for OK, 400 for bad request or if the user was already gone and 500 for
+                                    server error; plus a message indicating what happened.</th>
+                                <td>
+                                    <code>{ "result": "User deleted successfully" }</code>
+                                    <br/><code>{ "result": "User was already gone" }</code>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
