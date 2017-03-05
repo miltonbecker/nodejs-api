@@ -28,10 +28,10 @@ let addOrUpdateUser = function (object) {
             return op;
         }).then(function (op) {
             if (op.upsertedCount) {
-                return 1;
+                return constants.userAdded;
             }
             if (op.matchedCount) {
-                return 2;
+                return constants.userUpdated;
             }
             return 0;
         }).catch(function (error) {

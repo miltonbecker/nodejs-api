@@ -54,10 +54,10 @@ app.post('/api/addOrUpdateUser', jsonParser, function (req, res) {
     db.addOrUpdateUser(body)
         .then(function (result) {
             switch (result) {
-                case 1:
+                case constants.userAdded:
                     res.send(JSON.stringify({ result: 'User added successfully' }));
                     break;
-                case 2:
+                case constants.userUpdated:
                     res.send(JSON.stringify({ result: 'User updated successfully' }));
                     break;
                 default:
