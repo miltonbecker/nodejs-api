@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API's List</title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome</h1>
+        <p class="lead">Here are the API's provided by this server</p>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <a href="#getUserAge" data-toggle="collapse" class="panel-title">
+                    getUserInfo <span class="caret"></span>
+                </a>
+            </div>
+            <div id="getUserAge" class="panel-collapse collapse in">
+                <table class="table table-bordered table-hover">
+                    <colgroup>
+                        <col class="col-md-3">
+                        <col class="col-md-5">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th scope="row">URL</th>
+                            <td>/api/getUserInfo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Format</th>
+                            <td>JSON</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Type</th>
+                            <td>POST</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Parameters</th>
+                            <td>name</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Example of POST data</th>
+                            <td><code>{ "name": "Jon" }</code></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Returns all the user info - if found in the db</th>
+                            <td><code>{ "name": "Jon", "age": 40, "city": "London", "subscribed": false }</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
