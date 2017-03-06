@@ -1,21 +1,21 @@
 {
-  "name": "nodejs-project",
+  "name": "nodejs-api",
   "version": "1.0.0",
-  "description": "nodejs-project",
+  "description": "nodejs-api",
   "main": "js/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miltonbecker/nodejs-project.git"
+    "url": "git+https://github.com/miltonbecker/nodejs-api.git"
   },
   "author": "Milton Becker Junior",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/miltonbecker/nodejs-project/issues"
+    "url": "https://github.com/miltonbecker/nodejs-api/issues"
   },
-  "homepage": "https://github.com/miltonbecker/nodejs-project#readme",
+  "homepage": "https://github.com/miltonbecker/nodejs-api#readme",
   "devDependencies": {},
   "dependencies": {
     "body-parser": "^1.17.0",
