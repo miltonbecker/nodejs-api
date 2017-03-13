@@ -37,7 +37,7 @@ let jsonParser = parser.json({
             JSON.parse(buf);
         } catch (error) {
             res.status(400).json({ Error: error.message });
-            throw Error(error);
+            throw error;
         }
     }
 });
