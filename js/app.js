@@ -14,7 +14,7 @@ app.get('/', function (req, res) {
 app.use('/node_modules', express.static(path.resolve(`${__dirname}/../node_modules`)));
 
 app.get('/api/getUserInfo/:name', function (req, res) {
-    let name = req.params.name;
+    let name = formatName(req.params.name);
     if (!name) {
         return res.sendStatus(400);
     }
@@ -22,7 +22,7 @@ app.get('/api/getUserInfo/:name', function (req, res) {
     db.getUserInfo(name)
         .then(function (result) {
             if (!result) {
-                res.send('{}');
+                res.json('{}');
                 return;
             }
             res.send(result);
@@ -42,12 +42,23 @@ let jsonParser = parser.json({
     }
 });
 
-app.post('/api/addOrUpdateUser', jsonParser, function (req, res) {
-    let body = req.body;
-    if (!body || !body.name) {
-        return res.sendStatus(400);
+function formatName(name) {
+    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+}
+
+function nameParser(req, res, next) {
+    if (!req.body || !req.body.name) {
+        res.sendStatus(400);
+        return false;
     }
 
+    req.body.name = formatName(req.body.name);
+
+    next();
+}
+
+app.post('/api/addOrUpdateUser', jsonParser, nameParser, function (req, res) {
+    let body = req.body;
     db.addOrUpdateUser(body)
         .then(function (result) {
             switch (result) {
@@ -66,7 +77,7 @@ app.post('/api/addOrUpdateUser', jsonParser, function (req, res) {
 });
 
 app.delete('/api/deleteUser/:name', function (req, res) {
-    let name = req.params.name;
+    let name = formatName(req.params.name);
     if (!name) {
         return res.sendStatus(400);
     }
@@ -83,6 +94,4 @@ app.delete('/api/deleteUser/:name', function (req, res) {
         });
 });
 
-app.listen(constants.serverPort, function () {
-    console.log('Listening on port %d...', constants.serverPort);
-});
+module.exports = app;
