@@ -4,7 +4,7 @@ let app = require('./../js/app');
 
 const testUser = { name: 'Test', age: 40 };
 
-describe('Posts user info', function () {
+describe('Add/update user info', function () {
     const route = '/api/addOrUpdateUser';
 
     it('Returns http code 200', function (done) {
@@ -38,8 +38,8 @@ describe('Posts user info', function () {
     });
 });
 
-describe('Requests user info', function () {
-    const route = '/api/getUserInfo/Test';
+describe('Get user info', function () {
+    const route = `/api/getUserInfo/${testUser.name}`;
     const lowerCaseRoute = '/api/getUserInfo/test';
     const crazyCaseRoute = '/api/getUserInfo/tEsT';
 
@@ -72,4 +72,26 @@ describe('Requests user info', function () {
             .get(crazyCaseRoute)
             .expect(testUser, done);
     });
+});
+
+describe('Delete user info', function () {
+    const route = `/api/deleteUser/${testUser.name}`;
+
+    describe('When deleting existing user', function () {
+        it('Returns http code 200 and JSON saying it was successful', function (done) {
+            request(app)
+                .delete(route)
+                .expect('Content-Type', /json/)
+                .expect(200, /successfully/i, done);
+        });
+    });
+
+    describe('When deleting non-existing user', function () {
+        it('Returns http code 400 and JSON saying user was already gone', function (done) {
+            request(app)
+                .delete(route)
+                .expect('Content-Type', /json/)
+                .expect(400, /gone/i, done);
+        });
+    });    
 });
