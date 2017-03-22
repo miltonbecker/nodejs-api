@@ -93,5 +93,5 @@ describe('Delete user info', function () {
                 .expect('Content-Type', /json/)
                 .expect(400, /gone/i, done);
         });
-    });    
+    });
 });
