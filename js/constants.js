@@ -1,8 +1,8 @@
 'use strict';
 
 const dbUrl = 'mongodb://localhost:27017';
-const dbName = 'test';
-const serverPort = 8080;
+const dbName = 'nodejs-api';
+const serverPort = 3000;
 
 const userAdded = 1;
 const userUpdated = 2;
