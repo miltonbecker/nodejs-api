@@ -1,5 +1,7 @@
 # nodejs-api
 
-Check out this project's website at https://miltonbecker.github.io/nodejs-api/
+You can see this project live (and use the API) at http://miltonbecker.com:3000
 
-You can see this project (and use the API) live at http://miltonbecker.com:3000
+## Build status
+
+Check this project' build status at https://travis-ci.org/miltonbecker/nodejs-api
