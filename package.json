@@ -5,14 +5,10 @@
   "main": "js/app.js",
   "scripts": {
     "start": "./bin/www",
-    "test": "nyc mocha tests/*.js && nyc report --reporter=text-lcov | coveralls",
+    "test": "nyc mocha test/*.js",
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "watch": "nodemon bin/www",
-    "test-watch": "mocha -w js/*.js tests/*.js"
-  },
-  "config": {
-    "blanket": {
-      "pattern": "js"
-    }
+    "test-watch": "mocha -w js/*.js test/*.js"
   },
   "repository": {
     "type": "git",
