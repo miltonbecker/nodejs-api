@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-let app = require('./../js/app');
-let constants = require('./../js/constants');
+let app = require('../js/app');
+let constants = require('../js/constants');
 
 app.listen(constants.serverPort, function () {
     console.log('Listening on port %d...', constants.serverPort);

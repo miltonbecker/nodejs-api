@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "api",
+      "script": "./bin/www",
+      "watch": false,
+      "merge_logs": true,
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
